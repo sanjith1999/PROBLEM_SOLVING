@@ -3,17 +3,22 @@
 
 using namespace std;
 
-void display_array(int *A, int n) {
-    for (int i = 0; i < n; i++)cout << A[i] << "\t";
+void display_array(int *A, int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << A[i] << "\t";
     cout << endl;
 }
 
-void insertion_sort(int *A, int n) {
+void insertion_sort(int *A, int n)
+{
     int key = 0;
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; i++)
+    {
         key = A[i];
         int j = i - 1;
-        while (j > -1 && A[j] > key) {
+        while (j > -1 && A[j] > key)
+        {
             A[j + 1] = A[j];
             j--;
         }
@@ -21,14 +26,17 @@ void insertion_sort(int *A, int n) {
     }
 }
 
-
-void bubbleSort(int *A, int n) {
+void bubbleSort(int *A, int n)
+{
     bool swapped = false;
     int i = 1, temp = 0, count = 0;
-    do {
+    do
+    {
         swapped = false;
-        for (i = 1; i < n - count; i++) {
-            if (A[i - 1] > A[i]) {
+        for (i = 1; i < n - count; i++)
+        {
+            if (A[i - 1] > A[i])
+            {
                 temp = A[i], A[i] = A[i - 1], A[i - 1] = temp;
                 swapped = true;
             }
@@ -37,11 +45,12 @@ void bubbleSort(int *A, int n) {
     } while (swapped);
 }
 
-
-void merge(int array[], int const left, int const mid, int const right) {
+void merge(int array[], int const left, int const mid, int const right)
+{
     int mergedArr[right - left + 1];
     int i = left, j = mid + 1, k = 0;
-    while (i < mid + 1 && j < right + 1) {
+    while (i < mid + 1 && j < right + 1)
+    {
         mergedArr[k++] = (array[i] > array[j]) ? array[j++] : array[i++];
     }
     while (i < mid + 1)
@@ -52,8 +61,10 @@ void merge(int array[], int const left, int const mid, int const right) {
         array[i] = mergedArr[i - left];
 }
 
-void mergeSort(int array[], int const begin, int const end) {
-    if (begin == end) {
+void mergeSort(int array[], int const begin, int const end)
+{
+    if (begin == end)
+    {
         return;
     }
     mergeSort(array, begin, (begin + end) / 2);
@@ -61,12 +72,23 @@ void mergeSort(int array[], int const begin, int const end) {
     merge(array, begin, (begin + end - 1) / 2, end);
 }
 
-int main() {
+void heap_sort(int A[], int n)
+{
+    priority_queue<int> max_q;
+    for (int i = 0; i < n; i++)
+        max_q.push(A[i]);
+    for (int i = n - 1; i > -1; i--)
+        A[i] = max_q.top(), max_q.pop();
+}
+
+int main()
+{
     int n = 5;
     int A[] = {4, 3, 2, 5, 1};
-//    insertion_sort(A, n);
-//    mergeSort(A, 0, 4);
-//    bubbleSort(A, n);
+    //    insertion_sort(A, n);
+    //    mergeSort(A, 0, 4);
+    //    bubbleSort(A, n);
+    heap_sort(A, n);
     display_array(A, n);
     return 0;
 }

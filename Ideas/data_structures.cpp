@@ -1,4 +1,4 @@
-# include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -52,7 +52,6 @@ swap(queue) : exchange contents of queue
 Pointers not available to access memory...!
  */
 
-
 // Stack : LIFO
 // Containers -> deque(default), list, vector
 stack<int> st;
@@ -67,7 +66,7 @@ stack<int> st;
 
 // Priority Queue
 priority_queue<int> max_heap;
-priority_queue<int, list<int>, greater<int>> min_heap;   // Implementation also possible by negating each elements of max_heap and negating back before use
+priority_queue<int, list<int>, greater<int>> min_heap; // Implementation also possible by negating each elements of max_heap and negating back before use
 /*
  push() : Inserting element
  size()
@@ -77,11 +76,99 @@ priority_queue<int, list<int>, greater<int>> min_heap;   // Implementation also 
  */
 
 // Defining a function to be used in custom-dtype priority queue
-struct compare_function {
-    bool operator()(pair<int, int> const &p1, pair<int, int> const &p2) {
+struct compare_function
+{
+    bool operator()(pair<int, int> const &p1, pair<int, int> const &p2)
+    {
         return p1.first > p2.first;
     }
 };
 
 priority_queue<int, list<pair<int, int>>, compare_function> custom_min_q;
 
+// Set : RED-BLACK TREES
+set<int, less<int>> s;
+multiset<int> ms; // This allows insertion of multiple element with same key
+/*
+Acessing Memory --> begin(), end()
+1. empty() : returns whether empty
+2. size() : returns size
+3. max_size() : returns maximum possible number of elements
+4. clear() : clears the content
+5. insert() : insert elements
+6. emplace() : create and place an element
+7. erase() : erase elements
+8. swap() : swap contents
+9. extract() : extract nodes from container
+10. merge()
+11. count() : returns number of elements matching specific key
+12. find() : find element with specific key
+13. contains() : check whether specific key present
+14. lower_bound() : returns an iterator to first element not less than given key
+15. upper_bound() : returns an iterator to first element greater than given key
+Non-Member Functions
+--------------------
+erase_if(set) : erase all elements satisfying specific criteria
+MULTI_SET
+--------
+1. equal_range() : returns range of elements matching specific key
+ */
+
+// MAP : RED-BLACK TREES(sorted container)
+map<string, int, less<string>> m;
+multimap<string,int> mm;// This allows insertion of multiple element with same key
+/* 
+m["element"] is same as m.at("element")
+Acesssing memory : begin(), end()
+1. empty() : whether empty
+2. size() : returns number of elements
+3. max_size() : returns maximum possible number of elements
+4. clear(): clear contents
+5. insert() : insert elements
+6. insert_or_assign() : insert an element or assign current value if key exist
+7. emplace() : construct element in place
+8. try_emplace() : insert in place if key not-exist(otherwise leave)
+9. erase() : erase elements
+10. swap() : swapping contents
+11. merge ()
+12. count() : 
+13. find() : iterator to specific key
+14. contains() : 
+15. equal_range
+16. lower_bound
+17. upper_bound
+Non-Member Functions
+--------------------
+erase_if(set) : erase all elements satisfying specific criteria
+erase_if(m, [](const auto& pair){ return pair.second > 25; })
+ */
+
+
+//UNOREDRED SET : HASH MAPPING
+unordered_set<int> us; //constant time insertion and deletion operation
+unordered_multiset<int> ums;
+unordered_map<string,int> um;
+unordered_multimap<string,int> umm;
+/* 
+Acesssing memory : begin(), end()
+1. empty() : whether empty
+2. size() : returns number of elements
+3. max_size() : returns maximum possible number of elements
+4. clear(): clear contents
+5. insert() : insert elements
+7. emplace() : construct element in place
+9. erase() : erase elements
+10. swap() : swapping contents
+11. merge ()
+12. count() : 
+13. find() : iterator to specific key
+14. contains() : 
+15. equal_range
+16. buckey_count() : returns number of buckets
+17. bucket_size() : returns number of elements in specified bucket
+18. bucket() : returns the bucket of specified key
+19. load_factor() : average number of elements per bucket
+20. rehash() : regenerates hash table
+21. hash_function() : function used to hash the keys
+22. key_eq() : func used to compare keys
+ */
