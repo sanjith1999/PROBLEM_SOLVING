@@ -1,0 +1,4 @@
+.vscode/*
+*.exe
+check.cc 
+main.cc
